@@ -16,7 +16,7 @@ A full-stack app simulating an onboarding reward system that demonstrates delaye
 ## Live Demo
 
 - Frontend: WIP
-- Backend API: WIP
+- Backend API: https://welcome-reward-system-demo.onrender.com
 
 ## Features
 
@@ -134,4 +134,4 @@ Returns demo users and resets a selected user's demo state.
 
 ## Note
 
-The reward job worker is designed to be idempotent, so duplicate job execution does not create duplicate reward notifications
+The reward job worker is designed to be idempotent, so duplicate job execution does not create duplicate reward notifications.

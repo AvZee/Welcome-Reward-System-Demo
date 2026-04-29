@@ -104,7 +104,8 @@ onboardingRouter.post("/complete", async (c) => {
         metadata: {},
     });
 
-    const scheduledFor = new Date(Date.now() + parseDelayMs(rewardDelay));
+    const now = new Date();
+    const scheduledFor = new Date(now.getTime() + parseDelayMs(rewardDelay));
 
     const jobId = await boss.send(
         WELCOME_REWARD_QUEUE,
@@ -139,6 +140,7 @@ onboardingRouter.post("/complete", async (c) => {
         jobId,
         delay: rewardDelay,
         scheduledFor: scheduledFor.toISOString(),
+        serverNow: now.toISOString(),
     });
 });
 

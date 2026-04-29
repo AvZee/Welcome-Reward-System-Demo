@@ -40,6 +40,7 @@ function App() {
   const [events, setEvents] = useState<RewardEvent[]>([]);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [scheduledFor, setScheduledFor] = useState<string | null>(null);
+  const [serverOffsetMs, setServerOffsetMs] = useState(0);
   const [remainingSeconds, setRemainingSeconds] = useState<number | null>(null);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -80,10 +81,14 @@ function App() {
     try {
       const data = await completeOnboarding(userId);
 
-      if (data.scheduledFor) {
+      if (data.scheduledFor && data.serverNow) {
         setScheduledFor(data.scheduledFor);
       }
 
+      const serverNowMs = new Date(data.serverNow).getTime();
+      const clientNowMs = Date.now();
+
+      setServerOffsetMs(serverNowMs - clientNowMs);
       setMessage(data.message ?? "Onboarding completed.");
       await refreshData(userId);
     } catch (err) {
@@ -131,7 +136,7 @@ function App() {
     }
 
     const updateCountdown = () => {
-      const remainingMs = new Date(scheduledFor).getTime() - Date.now();
+      const remainingMs = new Date(scheduledFor).getTime() - (Date.now() + serverOffsetMs);
       setRemainingSeconds(Math.max(0, Math.ceil(remainingMs / 1000)));
     };
 
