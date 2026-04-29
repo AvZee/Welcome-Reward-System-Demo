@@ -15,7 +15,7 @@ A full-stack app simulating an onboarding reward system that demonstrates delaye
 
 ## Live Demo
 
-- Frontend: WIP
+- Frontend: https://welcome-reward-system-demo.vercel.app
 - Backend API: https://welcome-reward-system-demo.onrender.com
 
 ## Features

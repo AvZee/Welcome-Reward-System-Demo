@@ -14,6 +14,7 @@ app.use(
     cors({
         origin: [
             "http://localhost:5173",
+            "https://welcome-reward-system-demo.vercel.app",
         ],
         allowMethods: ["GET", "PATCH", "OPTIONS"],
         allowHeaders: ["Content-Type"],
