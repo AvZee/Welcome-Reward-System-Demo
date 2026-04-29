@@ -1,0 +1,1 @@
+export const WELCOME_REWARD_QUEUE = "welcome-reward-notification";
